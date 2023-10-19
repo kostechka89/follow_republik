@@ -26,7 +26,7 @@
         }
     }
 
-    // Добавление кнопки на страницу
+    
     const clickButton = document.createElement("button");
     clickButton.textContent = "Нажать кнопки 'Follow'";
     clickButton.style.position = "fixed";
