@@ -1,0 +1,43 @@
+// ==UserScript==
+// @name         Нажатие кнопок "Follow"
+// @namespace    http://your.namespace.com
+// @version      1.0
+// @description  Нажимает кнопки "Follow"
+// @author       Your Name
+// @match        *://*/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    function clickFollowButtons() {
+        const buttons = document.evaluate(
+            "//ion-button[contains(., 'Follow')]",
+            document,
+            null,
+            XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+            null
+        );
+
+        for (let i = 0; i < buttons.snapshotLength; i++) {
+            const button = buttons.snapshotItem(i);
+            button.click();
+        }
+    }
+
+    // Добавление кнопки на страницу
+    const clickButton = document.createElement("button");
+    clickButton.textContent = "Нажать кнопки 'Follow'";
+    clickButton.style.position = "fixed";
+    clickButton.style.top = "0";
+    clickButton.style.left = "0";
+    clickButton.style.padding = "10px 20px";
+    clickButton.style.backgroundColor = "#007bff";
+    clickButton.style.color = "#fff";
+    clickButton.style.border = "none";
+    clickButton.style.cursor = "pointer";
+    clickButton.style.margin = "5px";
+    clickButton.addEventListener("click", clickFollowButtons);
+    document.body.appendChild(clickButton);
+})();
